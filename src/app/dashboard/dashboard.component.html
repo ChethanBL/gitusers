@@ -1,10 +1,63 @@
-<p>dashboard works!hgjhgjhgh</p>
-<input type="text" [(ngModel)]="search_user"><br>
+<div class="card w-80">
+    <div class="row" style="margin-top: 1em; background-color: rgb(158, 153, 153);">
 
-<button (click)="getUser()"></button>
+        <div class="col-3">
+            <img alt="Logo" style="width:40% ;height:8em" src="https://i.ytimg.com/vi/zbs4CKhIGu0/maxresdefault.jpg" class="logo" />
 
-<div *ngFor="let item of users_list">
-    <div (click)=viewUser(item)>
-        {{item.login}}
+        </div>
+        <div class="col-6">
+            <h2 class="ml-5 " style="font-weight: 500; color: rgb(0, 0, 0); "> Git Profile Viewer </h2>
+            <div class="input-group" style="margin-top: 2em;">
+                <div class="form-outline">
+                    <input type="search" id="form1" [(ngModel)]="search_user" class="form-control" />
+
+                </div>
+                <button type="button" class="btn btn-primary" (click)="getUser()" (search)="reload()">
+                  <i class="fas fa-search"> search</i>
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div *ngIf="!showsingleuser" class="row" style=" height: 75vh; margin-top: 1em ;overflow: auto; ">
+
+    <div class="card  shadow  mb-2 bg-white rounded " style=" width:45%; margin-left:2.5em" *ngFor="let item of users_list" (click)='viewUser(item)'>
+
+        <div class="row ">
+            <div class="col-3 ">
+                <div class="small-screen " style="width:100% "><img [src]="item.avatar_url" style="margin-left:33%;width:25% ;height:3em;border-radius: 50%; "> </div>
+            </div>
+            <div class="col-9 ">
+
+                <div style="font-weight: bold; text-align: left "> {{item?.login}}</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div *ngIf="showsingleuser" class="row" style="  margin-top: 1em ; ">
+
+    <div class="card  shadow  mb-2 bg-white rounded " style=" width:45%; margin-left:2.5em" *ngFor="let item of users_list" (click)='viewUser(item)'>
+
+        <div class="row ">
+            <div class="col-3 ">
+                <div class="small-screen " style="width:100% "><img [src]="item.avatar_url" style="margin-left:33%;width:25% ;height:3em;border-radius: 50%; "> </div>
+            </div>
+            <div class="col-9 ">
+
+                <div style="font-weight: bold; text-align: left "> {{item?.login}}</div>
+
+
+            </div>
+        </div>
+
     </div>
 </div>

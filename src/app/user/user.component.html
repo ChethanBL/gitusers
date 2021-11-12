@@ -1,1 +1,57 @@
-<p>user works!</p>
+<div class="container" style="margin-top: 2em;">
+
+    <i class="bi bi-backspace-fill" style="margin-top: 2em;" (click)=" homepage() "> back</i>
+    <div class="row ">
+        <div class=" ">
+            <img class="center small-screen-image " [src]="user_list?.avatar_url " alt=" ">
+        </div>
+        <br>
+        <div class=" ">
+            <h3 class="ml-5 small-screen-name ">{{user_list?.name}}</h3>
+            <h4 class="ml-5 small-screen-username " style="color: grey; ">{{user_list?.login}}</h4>
+        </div>
+
+
+        <h5 class="ml-5 " *ngIf="bio " style="font-weight: 300; "> Bio {{user_list?.bio}}</h5>
+
+        <h5 *ngIf="!bio " class="ml-5 " style="font-weight: 300; ">Bio : not available</h5>
+        <h5 class="ml-5 " style="font-weight: 300; color: grey; "> works at </h5>
+        <h4 class="ml-5 small-screen-username ">{{user_list?.company}}</h4>
+        <div class="row ">
+            <div class="col-6 ">
+                <div class="ml-5 mt-3 ">
+                    <h5 class="ml-5 small-screen-name ">Repositories</h5>
+                    <h4 class="ml-5 small-screen-username " style="color: grey; ">{{user_list?.public_repos}}</h4>
+
+                </div>
+            </div>
+            <div class="col-6 ">
+
+                <div class="ml-5 mt-3 ">
+                    <h5 class="ml-5 small-screen-name ">followers</h5>
+                    <h4 class="ml-5 small-screen-username " style="color: grey; ">{{user_list.followers}}</h4>
+
+                </div>
+            </div>
+
+        </div>
+
+        <h5 class="ml-5 " style="font-weight: 300; color: grey; "> Pinned Repositories </h5>
+
+        <div class="card w-80 shadow p-3 mb-5 bg-white rounded " style='margin-right: 2em;' *ngFor="let repo of repo_list ">
+
+            <div class="row ">
+                <div class="col-3 ">
+                    <div class="small-screen " style="width:100% "><img [src]="repo.owner?.avatar_url " style="margin-left:33%;width:25% ;height:3em;border-radius: 50%; "> </div>
+                </div>
+                <div class="col-9 ">
+
+                    <div style="font-weight: bold; text-align: left "> {{repo?.full_name}}</div>
+
+                    <div style="text-align: left ">{{repo?.description}} </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -17,11 +17,21 @@ export class DashboardComponent implements OnInit {
   users_list: any;
   search_user: any;
   search_user_res: any;
+
+  showsingleuser=false;
+
+
   ngOnInit(): void {
-    this.httpClientCallService.getUsersList().subscribe((data) => {
-      this.users_list = data;
-      console.log("user list", this.users_list);
-    });
+  
+    
+      console.log("this", this.search_user);
+     
+      if(this.search_user==undefined){
+        this.httpClientCallService.getUsersList().subscribe((data) => {
+          this.users_list = data;
+          console.log("user list", this.users_list);
+        });
+      }   
   }
 
   getUser(): any {
@@ -30,7 +40,12 @@ export class DashboardComponent implements OnInit {
     this.httpClient.get<any>(`https://api.github.com/users/${name}`).subscribe(
       (res) => {
         if (res) {
+          let a:any[]=[];
           this.search_user_res = res;
+          a.push(res);
+          this.users_list=a;
+          this.showsingleuser=true;
+          console.log("this",this.users_list)
           console.log(res);
         }
       },
@@ -45,5 +60,9 @@ export class DashboardComponent implements OnInit {
     console.log("view", seleted_user)
     this.httpClientCallService.seleted_user.next(seleted_user);
     this.router.navigate(['user'])
+  }
+  reload()
+  {
+    console.log('clear')
   }
 }

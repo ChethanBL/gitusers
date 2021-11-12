@@ -1,0 +1,40 @@
+.appContainer {
+    width: 100%;
+    border: 1px solid rgb(125, 151, 221);
+    // max-width: 600px;
+    margin: 0 auto 0 auto;
+}
+
+.container {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    color: #405065;
+}
+
+.header {
+    width: 98.5%;
+    position: fixed;
+    border-bottom: 1px solid gray;
+}
+
+.headers {
+    width: 50%;
+    position: fixed;
+    border-bottom: 1px solid gray;
+}
+
+.eachItem {
+    height: fit-content;
+    width: 30%;
+    margin: 1em 1em 1em 2.3em;
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 gray;
+}
+
+.center {
+    display: block;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+    height: 45vh;
+}
